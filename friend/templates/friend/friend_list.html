@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+friend_list.html
+{% endblock %}
+
+{% block content %}
+    {% if List %}
+        <fieldset>
+            <legend><b>"나"의 친구들...</b></legend>
+            <form action="{% url 'chat:new_room' %}" method="post">
+                {% csrf_token %}
+                {% for frn in List %}
+                    <p>
+                        <input type="checkbox" id="{{ forloop.counter }}" name="chk_info[]" value="{{ frn.username }}"/>
+                        <label for="{{ forloop.counter }}">{{ frn.username }}</label>
+                    </p>
+                {% endfor %}
+
+                <input type="submit" value="채팅방만들기.">
+            </form>
+        </fieldset>
+    {% endif %}
+{% endblock %}

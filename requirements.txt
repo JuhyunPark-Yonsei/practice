@@ -1,0 +1,8 @@
+django-extensions
+ipython
+notebook
+Pillow
+pilkit
+django-imagekit
+channels
+asgi_redis

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    friend_add.html
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>검색기능을 제공합니다.</h3>
+
+            {% if error_msg %}
+                <h3>{{ error_msg }}</h3>
+            {% endif %}
+
+            <p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="ID" value="{{ comment }}"/>
+                    <input type="submit" value="찾기"/>
+                </form>
+            </p>
+
+            {% if obj %}
+                <p>
+                    <form action="{% url 'friend:new' %}" method="post">
+                        {% csrf_token %}
+                        <input type="radio" id="USER" name="choice" value="{{ obj.id }}"/>
+                        <label for="USER">{{ obj.username }}, {{ obj.profile.address }}</label>
+                        <br/>
+
+                        <input type="submit" value="추가하겠습니다.">
+                    </form>
+                </p>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

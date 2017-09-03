@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}
+    room_list.html
+{% endblock %}
+
+{% block content %}
+    {% if List %}
+        <fieldset>
+            <legend><b>"나"의 채팅방 목록들..</b></legend>
+            {% for ele in List %}
+                <p><a href="{{ ele.get_absolute_url }}">{{ ele }}</a> </p>
+            {% endfor %}
+        </fieldset>
+    {% else %}
+        <h3>현재 내가 참여하고 있는 채팅방이 없습니다.
+        채팅방을 만드는 URL로 안내하는 단추를 하나 만들자.</h3>
+    {% endif %}
+{% endblock %}
